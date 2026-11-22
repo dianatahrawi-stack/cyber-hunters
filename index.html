@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101d35">
+  <title>CYBER HUNTERS | University Edition</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">⌁</span><div><b>CYBER HUNTERS</b><small>UNIVERSITY CYBERSECURITY CHALLENGE</small></div></div>
+    <span class="live-pill"><i></i> TRAINING SIMULATION</span>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">THINK · DETECT · DEFEND</div>
+      <h1>Enter the <span>Cyber Arena.</span></h1>
+      <p>حلّل الحوادث، اتخذ القرار، وتنافس مع زملائك في تحديات الأمن السيبراني.</p>
+    </section>
+
+    <section id="setup" class="panel">
+      <div class="section-heading"><div><span class="eyebrow">PLAYER ACCESS</span><h2>Join the mission</h2></div><span class="step">01 / ACCESS</span></div>
+      <div class="tabs">
+        <button class="tab active" data-mode="student">Student / طالب</button>
+        <button class="tab" data-mode="instructor">Instructor / مدرّب</button>
+      </div>
+      <div id="student-form">
+        <label>اسم الطالب / Player name<input id="playerName" maxlength="40" placeholder="اكتب اسمك"></label>
+        <label>رمز الجلسة / Session code<input id="sessionCode" maxlength="12" placeholder="مثال: CYBER26"></label>
+        <label>الفريق / Team
+          <select id="teamName"><option value="Red Team">Red Team</option><option value="Blue Team">Blue Team</option><option value="Digital Guardians">Digital Guardians</option><option value="Zero Day">Zero Day</option></select>
+        </label>
+        <button id="joinBtn" class="primary">Join the challenge <span>→</span></button>
+        <p class="hint">اطلبي رمز الجلسة من المدرب. لا تدخلي أي كلمة مرور جامعية هنا.</p>
+      </div>
+      <div id="instructor-form" class="hidden">
+        <p class="notice">إنشاء الجلسات والتحكم بها متاحان بعد إعداد مشروع Supabase ومفاتيح الوصول. راجعي ملف README_AR داخل الحزمة.</p>
+        <label>Instructor setup status<input value="Requires Supabase configuration" disabled></label>
+        <button class="secondary" id="showSetup">عرض تعليمات الإعداد</button>
+      </div>
+      <div id="connectionStatus" class="status">● وضع الإعداد: لم يتم ربط قاعدة البيانات بعد</div>
+    </section>
+
+    <section id="game" class="panel hidden">
+      <div class="game-head">
+        <div><span class="eyebrow" id="missionCount">MISSION 1 / 5</span><h2 id="missionTitle">PHISHING DETECTION</h2><p id="missionArabic" class="muted"></p></div>
+        <div class="score-box"><small>YOUR SCORE</small><b id="myScore">0</b><small>POINTS</small></div>
+      </div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div class="scenario"><span class="eyebrow">INCIDENT BRIEFING</span><p id="scenarioText"></p><div id="evidence" class="evidence"></div></div>
+      <h3 id="questionText"></h3>
+      <div id="answers" class="answers"></div>
+      <div id="feedback" class="feedback hidden"></div>
+      <button id="nextBtn" class="primary hidden">Next mission →</button>
+      <div class="footer-note">تعليمي فقط: جميع العناوين والبيانات في السيناريوهات تجريبية ولا تمثل أنظمة حقيقية.</div>
+    </section>
+
+    <section id="instructor" class="panel hidden">
+      <div class="section-heading"><div><span class="eyebrow">COMMAND CENTER</span><h2>Instructor dashboard</h2></div><span class="live-pill"><i></i> LIVE</span></div>
+      <div class="stats"><div><small>PLAYERS</small><b id="playerCount">0</b></div><div><small>TEAMS</small><b id="teamCount">0</b></div><div><small>SESSION</small><b id="dashCode">—</b></div></div>
+      <div class="leaderboard"><h3>Live leaderboard / ترتيب الفرق</h3><div id="leaderRows"><p class="muted">لا توجد نتائج بعد.</p></div></div>
+      <button id="refreshDash" class="secondary">Refresh results</button>
+    </section>
+  </main>
+  <footer>CYBER HUNTERS · University Edition · Safe educational simulation</footer>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
